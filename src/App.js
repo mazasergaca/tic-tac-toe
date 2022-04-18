@@ -1,11 +1,12 @@
-import { useState } from "react";
-import GameField from "./components/GameField";
-import SquaresList from "./components/SquaresList";
-import { Global } from "./styles/global";
-import TitleStyled from "./components/Title";
-import InfoTable from "./components/InfoTable";
-import Restart from "./components/Restart";
-import computer from "./utils/computer";
+import { useState } from 'react';
+import GameField from './components/GameField';
+import SquaresList from './components/SquaresList';
+import { Global } from './styles/global';
+import TitleStyled from './components/Title';
+import InfoTable from './components/InfoTable';
+import Restart from './components/Restart';
+import computer from './utils/computer';
+import Container from 'components/Container';
 
 function calculateWinner(squares) {
   const lines = [
@@ -43,12 +44,12 @@ function App() {
     setXIsNext(true);
   };
 
-  const handleClick = (index) => {
+  const handleClick = index => {
     const newSquares = [...squares];
     if (calculateWinner(squares) || newSquares[index]) {
       return;
     }
-    newSquares[index] = xIsNext ? "X" : "O";
+    newSquares[index] = xIsNext ? 'X' : 'O';
 
     if (players) {
       setSquares(newSquares);
@@ -60,7 +61,7 @@ function App() {
   };
 
   return (
-    <>
+    <Container>
       <Global />
       <TitleStyled />
       <InfoTable
@@ -77,7 +78,7 @@ function App() {
           squares={squares}
         />
       </GameField>
-    </>
+    </Container>
   );
 }
 

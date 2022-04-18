@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Item = styled.li`
   width: calc(100% / 3);
@@ -15,7 +15,7 @@ export const Button = styled.button`
   width: 100%;
   height: 100%;
 
-  font-size: 120px;
+  font-size: 80px;
 
   border: none;
   background-color: transparent;
@@ -24,5 +24,9 @@ export const Button = styled.button`
 
   &:focus {
     background-color: #ffffff30;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 120px;
   }
 `;

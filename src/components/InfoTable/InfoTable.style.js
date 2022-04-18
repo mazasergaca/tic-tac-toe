@@ -1,25 +1,37 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-  width: 500px;
+  width: 80vw;
   margin: 0 auto 15px auto;
 
   display: flex;
+
+  @media screen and (min-width: 768px) {
+    width: 500px;
+  }
 `;
 
 export const ContainerInfo = styled.div`
-  width: 300px;
+  width: 30vw;
   margin: 0 auto;
   padding: 5px;
   background-color: #000;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
 `;
 
 export const InfoText = styled.p`
   text-align: center;
-  font-size: 32px;
+  font-size: 16px;
 
   color: #fff;
+
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 export const SwitchContainer = styled.div`
@@ -43,6 +55,13 @@ export const SwitchButton = styled.button`
 
   &:disabled {
     color: #000;
-    background-color: #66ffab;
+
+    border: none;
+    background: rgb(182, 116, 186);
+    background: linear-gradient(
+      83deg,
+      rgba(182, 116, 186, 1) 0%,
+      rgba(255, 55, 224, 1) 100%
+    );
   }
 `;
