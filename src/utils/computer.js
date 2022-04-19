@@ -14,9 +14,9 @@ function checkLines(field) {
   let first = null;
   for (const [a, b, c] of lines) {
     if (
-      (x[a] === x[b] && x[a] !== null) ||
-      (x[a] === x[c] && x[a] !== null) ||
-      (x[b] === x[c] && x[b] !== null)
+      (x[a] === x[b] && x[a] !== null && x[a] === 'O') ||
+      (x[a] === x[c] && x[a] !== null && x[a] === 'O') ||
+      (x[b] === x[c] && x[b] !== null && x[a] === 'O')
     ) {
       if (x[a] === null) {
         x[a] = 'O';
@@ -36,6 +36,29 @@ function checkLines(field) {
   if (first !== 1) {
     for (const [a, b, c] of lines) {
       if (
+        (x[a] === x[b] && x[a] !== null) ||
+        (x[a] === x[c] && x[a] !== null) ||
+        (x[b] === x[c] && x[b] !== null)
+      ) {
+        if (x[a] === null) {
+          x[a] = 'O';
+          first = 1;
+          break;
+        } else if (x[b] === null) {
+          x[b] = 'O';
+          first = 1;
+          break;
+        } else if (x[c] === null) {
+          x[c] = 'O';
+          first = 1;
+          break;
+        }
+      }
+    }
+  }
+  if (first !== 1) {
+    for (const [a, b, c] of lines) {
+      if (
         (x[a] === 'O' && x[b] === null && x[c] === null) ||
         (x[b] === 'O' && x[a] === null && x[c] === null) ||
         (x[c] === 'O' && x[b] === null && x[a] === null)
@@ -44,12 +67,12 @@ function checkLines(field) {
           x[a] = 'O';
           first = 2;
           break;
-        } else if (x[b] !== 'O') {
-          x[b] = 'O';
+        } else if (x[c] !== 'O') {
+          x[c] = 'O';
           first = 2;
           break;
         } else {
-          x[c] = 'O';
+          x[b] = 'O';
           first = 2;
         }
       }

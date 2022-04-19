@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-  width: 80vw;
-  margin: 0 auto 15px auto;
+
+  margin-bottom: 100px;
 
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: 768px) {
     width: 500px;
@@ -13,19 +15,13 @@ export const Container = styled.div`
 `;
 
 export const ContainerInfo = styled.div`
-  width: 30vw;
-  margin: 0 auto;
-  padding: 5px;
-  background-color: #000;
-
-  @media screen and (min-width: 768px) {
-    width: 300px;
-  }
+  padding: 0 10px;
+  width: 100%;
 `;
 
 export const InfoText = styled.p`
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
 
   color: #fff;
 
@@ -34,34 +30,64 @@ export const InfoText = styled.p`
   }
 `;
 
-export const SwitchContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+export const SwitchContainer = styled.ul`
+  margin-right: 10px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+
+  background-color: #000;
 `;
 
-export const SwitchButton = styled.button`
-  width: 80px;
+export const SwitchItem = styled.li``;
 
-  border: 1px solid #000;
-  background-color: #fff;
+export const SwitchButton = styled.button`
+  position: relative;
+  padding: 5px 10px;
+  display: inline-block;
+
+  transform: scale(0.8);
+  opacity: 0.5;
+  z-index: 100;
+  border: none;
+  backdrop-filter: blur(15px);
+  background-color: transparent;
+  color: #fff;
+  transition: opacity 250ms linear;
+
   cursor: pointer;
 
-  &:not(:last-child) {
-    margin-bottom: 5px;
-  }
-
   &:disabled {
-    color: #000;
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
 
-    border: none;
-    background: rgb(182, 116, 186);
-    background: linear-gradient(
-      83deg,
-      rgba(182, 116, 186, 1) 0%,
-      rgba(255, 55, 224, 1) 100%
-    );
+export const SwitchMarker = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${props => (props.players ? '67px' : '22px')};
+
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 10px;
+
+    border-radius: 4px;
+    background-color: #0f0;
+    box-shadow: 0 0 15px #5da6ff, 0 0 30px #5da6ff;
+
+    @media screen and (min-width: 768px) {
+      top: 0;
+    }
   }
 `;

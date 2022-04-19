@@ -9,13 +9,10 @@ export const Global = createGlobalStyle`
   }
   
 body {
-  height: 100vh;
-  background: radial-gradient(
-    circle,
-    rgba(3, 0, 47, 1) 0%,
-    rgba(27, 95, 90, 1) 45%,
-    rgba(30, 54, 139, 1) 100%
-  );
+  min-height: 100vh;
+
+  font-family: 'Secular One', sans-serif;;
+  background-color: #111;
     color: #000;
 }
 

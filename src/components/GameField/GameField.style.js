@@ -8,8 +8,6 @@ export const Field = styled.div`
   max-height: 500px;
   margin: 0 auto;
 
-  background-color: #000;
-
   @media screen and (min-width: 768px) {
     width: 500px;
     height: 500px;

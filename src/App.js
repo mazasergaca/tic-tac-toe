@@ -27,16 +27,21 @@ function calculateWinner(squares) {
   }
   return null;
 }
+let timerId = null;
 
 function App() {
   const initialSquares = Array(9).fill(null);
   const [players, setPlayers] = useState(false);
   const [squares, setSquares] = useState(initialSquares);
   const [xIsNext, setXIsNext] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   const togglePlayers = () => {
     setPlayers(!players);
     onRestartClick();
+    setDisabled(false);
+
+    clearTimeout(timerId);
   };
 
   const onRestartClick = () => {
@@ -47,6 +52,7 @@ function App() {
   const handleClick = index => {
     const newSquares = [...squares];
     if (calculateWinner(squares) || newSquares[index]) {
+      clearTimeout(timerId);
       return;
     }
     newSquares[index] = xIsNext ? 'X' : 'O';
@@ -55,8 +61,16 @@ function App() {
       setSquares(newSquares);
       setXIsNext(!xIsNext);
     } else {
-      const x = computer(newSquares);
-      setSquares(x);
+      setXIsNext(false);
+      setDisabled(true);
+      setSquares(newSquares);
+
+      timerId = setTimeout(() => {
+        const x = computer(newSquares);
+        setSquares(x);
+        setDisabled(false);
+        setXIsNext(true);
+      }, Math.random() * 1000);
     }
   };
 
@@ -71,7 +85,11 @@ function App() {
         players={players}
       />
       <GameField>
-        <SquaresList squares={squares} onClick={handleClick} />
+        <SquaresList
+          squares={squares}
+          onClick={handleClick}
+          disabled={disabled}
+        />
         <Restart
           winner={calculateWinner(squares)}
           onClick={onRestartClick}

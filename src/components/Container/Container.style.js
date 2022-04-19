@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const ContainerStyled = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 20px 5px;
+  margin: 0 auto;
+
+  min-height: 700px;
+
+  @media screen and (min-width: 768px) {
+    width: 500px;
+  }
 `;

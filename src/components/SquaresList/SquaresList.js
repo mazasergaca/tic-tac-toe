@@ -1,8 +1,8 @@
-import React from "react";
-import Square from "../Square/Square";
-import { List } from "./SquaresList.style";
+import React from 'react';
+import Square from '../Square/Square';
+import { List } from './SquaresList.style';
 
-export default function SquaresList({ squares, onClick }) {
+export default function SquaresList({ squares, onClick, disabled }) {
   return (
     <List>
       {Array(9)
@@ -12,6 +12,7 @@ export default function SquaresList({ squares, onClick }) {
             key={index}
             value={squares[index]}
             onClick={() => onClick(index)}
+            disabled={disabled}
           />
         ))}
     </List>
