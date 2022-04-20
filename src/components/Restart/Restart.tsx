@@ -1,7 +1,13 @@
-import React from "react";
+import React, {FC} from "react";
 import { Container, Button, Text } from "./Restart.style";
 
-export default function Restart({ winner, onClick, squares }) {
+interface RestartProps {
+  winner: number;
+  onClick: () => void;
+  squares: string[];
+}
+
+export const Restart: FC<RestartProps> = ({ winner, onClick, squares }) => {
   const checkSquares = () => {
     for (const square of squares) {
       if (!square) return false;

@@ -9,7 +9,7 @@ const lines = [
   [2, 4, 6],
 ];
 
-function checkLines(field) {
+function checkLines(field: string[]) {
   const x = [...field];
   let first = null;
   for (const [a, b, c] of lines) {
@@ -89,7 +89,7 @@ function checkLines(field) {
   return x;
 }
 
-export default function computer(field) {
+export default function computer(field: string[]) {
   const x = [...field];
   const [a0, a1, a2, a3, a4, a5, a6, a7, a8] = x;
   if (!a4) {

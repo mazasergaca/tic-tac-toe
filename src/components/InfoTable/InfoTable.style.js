@@ -84,7 +84,7 @@ export const SwitchMarker = styled.div`
 
     border-radius: 4px;
     background-color: #0f0;
-    box-shadow: 0 0 15px #5da6ff, 0 0 30px #5da6ff;
+    box-shadow: 0 0 15px #5da6ff;
 
     @media screen and (min-width: 768px) {
       top: 0;
