@@ -1,8 +1,14 @@
-import React from 'react';
-import Square from '../Square/Square';
+import React, {FC} from 'react';
+import { Square } from '../Square/Square.tsx';
 import { List } from './SquaresList.style';
 
-export default function SquaresList({ squares, onClick, disabled }) {
+interface SquaresListProps {
+  squares: string[];
+  onClick: (index: number) => void;
+  disabled: boolean;
+}
+
+export const SquaresList: FC<SquaresListProps> = ({ squares, onClick, disabled }) => {
   return (
     <List>
       {Array(9)

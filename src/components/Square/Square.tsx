@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Item, Button, Value } from './Square.style';
 
-export default function Square({ value, onClick, disabled }) {
+interface SquareProps {
+  value: string;
+  onClick: () => void;
+  disabled: boolean;
+}
+
+export const Square: FC<SquareProps> = ({ value, onClick, disabled }) => {
   return (
     <Item>
       <Button type="button" onClick={onClick} disabled={disabled}>

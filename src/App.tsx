@@ -1,14 +1,20 @@
-import { useState } from 'react';
-import GameField from './components/GameField';
-import SquaresList from './components/SquaresList';
+import React, { useState } from 'react';
+// @ts-ignore
+import { GameField } from './components/GameField/GameField.tsx'; 
+// @ts-ignore
+import { SquaresList } from './components/SquaresList/SquaresList.tsx';
 import { Global } from './styles/global';
-import TitleStyled from './components/Title';
-import InfoTable from './components/InfoTable';
-import Restart from './components/Restart';
-import computer from './utils/computer';
-import Container from 'components/Container';
+import { Title } from './components/Title/Title.js';
+// @ts-ignore
+import { InfoTable } from './components/InfoTable/InfoTable.tsx';
+// @ts-ignore
+import { Restart } from './components/Restart/Restart.tsx';
+// @ts-ignore
+import computer from './utils/computer.ts';
+// @ts-ignore
+import { Container } from 'components/Container/Container.tsx';
 
-function calculateWinner(squares) {
+function calculateWinner(squares: string[]) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -29,7 +35,7 @@ function calculateWinner(squares) {
 }
 let timerId = null;
 
-function App() {
+const App = () => {
   const initialSquares = Array(9).fill(null);
   const [players, setPlayers] = useState(false);
   const [squares, setSquares] = useState(initialSquares);
@@ -47,9 +53,11 @@ function App() {
   const onRestartClick = () => {
     setSquares(initialSquares);
     setXIsNext(true);
+    setDisabled(false);
+    clearTimeout(timerId);
   };
 
-  const handleClick = index => {
+  const handleClick = (index: number) => {
     const newSquares = [...squares];
     if (calculateWinner(squares) || newSquares[index]) {
       clearTimeout(timerId);
@@ -77,7 +85,7 @@ function App() {
   return (
     <Container>
       <Global />
-      <TitleStyled />
+      <Title />
       <InfoTable
         winner={calculateWinner(squares)}
         xIsNext={xIsNext}
@@ -98,6 +106,6 @@ function App() {
       </GameField>
     </Container>
   );
-}
+};
 
 export default App;

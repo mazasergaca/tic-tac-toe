@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { IoPersonOutline } from 'react-icons/io5';
 import { AiOutlineTeam } from 'react-icons/ai';
 import {
@@ -11,7 +11,14 @@ import {
   SwitchMarker,
 } from './InfoTable.style';
 
-export default function InfoTable({ winner, xIsNext, togglePlayers, players }) {
+interface InfoTabsProps {
+  winner: string;
+  xIsNext: boolean;
+  togglePlayers: ()=> void;
+  players: boolean;
+}
+
+ export const InfoTable: FC<InfoTabsProps> = ({ winner, xIsNext, togglePlayers, players }) => {
   return (
     <Container>
       <SwitchContainer>
@@ -36,3 +43,4 @@ export default function InfoTable({ winner, xIsNext, togglePlayers, players }) {
     </Container>
   );
 }
+
