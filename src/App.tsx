@@ -1,18 +1,12 @@
-import React, { useState } from 'react';
-// @ts-ignore
-import { GameField } from './components/GameField/GameField.tsx'; 
-// @ts-ignore
-import { SquaresList } from './components/SquaresList/SquaresList.tsx';
+import React, { useState, useRef } from 'react';
+import GameField from './components/GameField/GameField';
+import SquaresList from './components/SquaresList/SquaresList';
 import { Global } from './styles/global';
-import { Title } from './components/Title/Title.js';
-// @ts-ignore
-import { InfoTable } from './components/InfoTable/InfoTable.tsx';
-// @ts-ignore
-import { Restart } from './components/Restart/Restart.tsx';
-// @ts-ignore
-import computer from './utils/computer.ts';
-// @ts-ignore
-import { Container } from 'components/Container/Container.tsx';
+import Title from './components/Title/Title';
+import InfoTable from './components/InfoTable/InfoTable';
+import Restart from './components/Restart/Restart';
+import computer from './utils/computer';
+import Container from './components/Container/Container';
 
 function calculateWinner(squares: string[]) {
   const lines = [
@@ -33,7 +27,6 @@ function calculateWinner(squares: string[]) {
   }
   return null;
 }
-let timerId = null;
 
 const App = () => {
   const initialSquares = Array(9).fill(null);
@@ -42,25 +35,27 @@ const App = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [disabled, setDisabled] = useState(false);
 
+  const timerId = useRef<NodeJS.Timeout | null>(null);
+
   const togglePlayers = () => {
     setPlayers(!players);
     onRestartClick();
     setDisabled(false);
 
-    clearTimeout(timerId);
+    clearTimeout(timerId.current as NodeJS.Timeout);
   };
 
   const onRestartClick = () => {
     setSquares(initialSquares);
     setXIsNext(true);
     setDisabled(false);
-    clearTimeout(timerId);
+    clearTimeout(timerId.current as NodeJS.Timeout);
   };
 
   const handleClick = (index: number) => {
     const newSquares = [...squares];
     if (calculateWinner(squares) || newSquares[index]) {
-      clearTimeout(timerId);
+      clearTimeout(timerId.current as NodeJS.Timeout);
       return;
     }
     newSquares[index] = xIsNext ? 'X' : 'O';
@@ -73,7 +68,7 @@ const App = () => {
       setDisabled(true);
       setSquares(newSquares);
 
-      timerId = setTimeout(() => {
+      timerId.current = setTimeout(() => {
         const x = computer(newSquares);
         setSquares(x);
         setDisabled(false);

@@ -5,6 +5,4 @@ export const List = styled.ul`
 
   display: flex;
   flex-wrap: wrap;
-
-  /* overflow: hidden; */
 `;
