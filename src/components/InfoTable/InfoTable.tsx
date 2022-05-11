@@ -12,13 +12,18 @@ import {
 } from './InfoTable.style';
 
 interface InfoTabsProps {
-  winner: string;
+  winner: string | null;
   xIsNext: boolean;
-  togglePlayers: ()=> void;
+  togglePlayers: () => void;
   players: boolean;
 }
 
- export const InfoTable: FC<InfoTabsProps> = ({ winner, xIsNext, togglePlayers, players }) => {
+const InfoTable: FC<InfoTabsProps> = ({
+  winner,
+  xIsNext,
+  togglePlayers,
+  players,
+}) => {
   return (
     <Container>
       <SwitchContainer>
@@ -42,5 +47,6 @@ interface InfoTabsProps {
       </ContainerInfo>
     </Container>
   );
-}
+};
 
+export default InfoTable;

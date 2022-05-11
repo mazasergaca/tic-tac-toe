@@ -7,7 +7,7 @@ interface SquareProps {
   disabled: boolean;
 }
 
-export const Square: FC<SquareProps> = ({ value, onClick, disabled }) => {
+const Square: FC<SquareProps> = ({ value, onClick, disabled }) => {
   return (
     <Item>
       <Button type="button" onClick={onClick} disabled={disabled}>
@@ -15,4 +15,6 @@ export const Square: FC<SquareProps> = ({ value, onClick, disabled }) => {
       </Button>
     </Item>
   );
-}
+};
+
+export default Square;

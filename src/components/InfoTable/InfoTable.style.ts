@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type StylesProp = {
+  players: boolean
+}
+
 export const Container = styled.div`
   position: relative;
 
@@ -66,7 +70,7 @@ export const SwitchButton = styled.button`
   }
 `;
 
-export const SwitchMarker = styled.div`
+export const SwitchMarker = styled.div<StylesProp>`
   position: absolute;
   top: 0;
   left: ${props => (props.players ? '67px' : '22px')};

@@ -1,5 +1,5 @@
-import React, {FC} from 'react';
-import { Square } from '../Square/Square.tsx';
+import React, { FC } from 'react';
+import Square from '../Square/Square';
 import { List } from './SquaresList.style';
 
 interface SquaresListProps {
@@ -8,7 +8,7 @@ interface SquaresListProps {
   disabled: boolean;
 }
 
-export const SquaresList: FC<SquaresListProps> = ({ squares, onClick, disabled }) => {
+const SquaresList: FC<SquaresListProps> = ({ squares, onClick, disabled }) => {
   return (
     <List>
       {Array(9)
@@ -23,4 +23,6 @@ export const SquaresList: FC<SquaresListProps> = ({ squares, onClick, disabled }
         ))}
     </List>
   );
-}
+};
+
+export default SquaresList;
