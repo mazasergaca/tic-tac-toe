@@ -1,10 +1,27 @@
 import styled from 'styled-components';
 
-export const TitleStyled = styled.h1`
-  margin-bottom: 30px;
+export const WrapperTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  text-align: center;
-  font-size: 46px;
+export const Text = styled.span`
+  font-size: 76px;
+  font-weight: bold;
+  line-height: 1.1;
 
-  color: #fff;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &:nth-child(1) {
+    color: #ffa800;
+  }
+  &:nth-child(2) {
+    color: #eb00ff;
+  }
+  &:nth-child(3) {
+    color: #4c9bd4;
+  }
 `;
