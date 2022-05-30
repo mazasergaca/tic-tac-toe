@@ -66,5 +66,4 @@ export const Button = styled.button`
 
 export const Value = styled.span`
   color: #fff;
-  filter: drop-shadow(0 0 10px #ea4884) drop-shadow(0 0 30px #ea4884);
 `;

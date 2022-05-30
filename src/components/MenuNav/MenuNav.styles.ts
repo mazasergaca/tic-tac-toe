@@ -10,18 +10,28 @@ export const Container = styled.div`
   margin-top: 70px;
 `;
 
-export const MenuItem = styled.div`
+export const MenuItem = styled.button`
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+
   &:not(:last-child) {
     margin-bottom: 70px;
   }
 
-  &:hover div {
+  &:hover .field {
     transform: translateY(-50%) scale(1.1) rotate(30deg);
+  }
+
+  &:hover .name {
+    background-color: #d00e0e;
   }
 `;
 
@@ -37,8 +47,9 @@ export const Field = styled.div`
   transform: translateY(-50%) scale(1);
 
   border-radius: 50%;
-  background-color: #ffa800;
   border: 1px solid #ff8a00;
+  background-color: #ffa800;
+  transition: transform 250ms;
 `;
 
 export const Svg = styled.svg`
@@ -46,7 +57,7 @@ export const Svg = styled.svg`
   width: 70px;
 `;
 
-export const LinkStyled = styled(Link)<StylesI>`
+export const Name = styled.div<StylesI>`
   padding: 10px 0 10px 100px;
   width: 100%;
 
@@ -56,8 +67,4 @@ export const LinkStyled = styled(Link)<StylesI>`
   color: #fff;
   background-color: ${props => props.bgc};
   transition: background-color 250ms;
-
-  &:hover {
-    background-color: #d00e0e;
-  }
 `;

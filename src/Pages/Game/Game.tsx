@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { calculateWinner } from 'src/utils/calculate-winner';
 import computer from 'src/utils/computer';
 import GameField from '../../components/GameField/GameField';
 import SquaresList from '../../components/SquaresList/SquaresList';
-import Title from '../../components/Title/Title';
 import InfoTable from '../../components/InfoTable/InfoTable';
 import Restart from '../../components/Restart/Restart';
 import Container from '../../components/Container/Container';
@@ -17,13 +17,14 @@ const Game = () => {
 
   const timerId = useRef<NodeJS.Timeout | null>(null);
 
-  const togglePlayers = (): void => {
-    setPlayers(!players);
-    onRestartClick();
-    setDisabled(false);
+  const location = useLocation();
+  const typeGame = new URLSearchParams(location.search).get('type');
 
-    clearTimeout(timerId.current as NodeJS.Timeout);
-  };
+  useEffect(() => {
+    if (typeGame === 'one-player') setPlayers(false);
+    if (typeGame === 'two-players') setPlayers(true);
+    // eslint-disable-next-line
+  }, []);
 
   const onRestartClick = (): void => {
     setSquares(initialSquares);
@@ -59,12 +60,7 @@ const Game = () => {
 
   return (
     <Container>
-      <InfoTable
-        winner={calculateWinner(squares)}
-        xIsNext={xIsNext}
-        togglePlayers={togglePlayers}
-        players={players}
-      />
+      <InfoTable winner={calculateWinner(squares)} xIsNext={xIsNext} />
       <GameField>
         <SquaresList
           squares={squares}
@@ -75,6 +71,7 @@ const Game = () => {
           winner={calculateWinner(squares)}
           onClick={onRestartClick}
           squares={squares}
+          players={players}
         />
       </GameField>
     </Container>
