@@ -1,8 +1,8 @@
 import React from 'react';
-import Link from 'src/components/Link/Link';
 import Container from 'src/components/Container/Container';
+import Link from 'src/components/Link/Link';
 
-const Market = () => {
+const Achievement = () => {
   return (
     <Container>
       <div
@@ -15,7 +15,7 @@ const Market = () => {
         }}
       >
         <p style={{ fontSize: 28, textAlign: 'center', marginBottom: '30px' }}>
-          Section "Market" in developing
+          Section "Achievements" in developing
         </p>
         <Link to="/menu" size={24} bgc={'#45ff9f '}>
           Back
@@ -25,4 +25,4 @@ const Market = () => {
   );
 };
 
-export default Market;
+export default Achievement;
