@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { calculateWinner } from 'src/utils/calculate-winner';
 import computer from 'src/utils/computer';
-import GameField from '../../components/GameField/GameField';
 import SquaresList from '../../components/SquaresList/SquaresList';
 import InfoTable from '../../components/InfoTable/InfoTable';
 import Restart from '../../components/Restart/Restart';
@@ -10,8 +9,12 @@ import Container from '../../components/Container/Container';
 
 const Game = () => {
   const initialSquares = Array(9).fill(null);
-  const [players, setPlayers] = useState(false);
   const [squares, setSquares] = useState(initialSquares);
+  const [winner, setWinner] = useState<{
+    winner: string;
+    lines: number[];
+  } | null>(null);
+  const [players, setPlayers] = useState(false);
   const [xIsNext, setXIsNext] = useState(true);
   const [disabled, setDisabled] = useState(false);
 
@@ -21,9 +24,17 @@ const Game = () => {
   const typeGame = new URLSearchParams(location.search).get('type');
 
   useEffect(() => {
+    setWinner(calculateWinner(squares));
+  }, [squares]);
+
+  useEffect(() => {
     if (typeGame === 'one-player') setPlayers(false);
-    if (typeGame === 'two-players') setPlayers(true);
+    else if (typeGame === 'two-players') setPlayers(true);
     // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    return () => clearTimeout(timerId.current as NodeJS.Timeout);
   }, []);
 
   const onRestartClick = (): void => {
@@ -35,7 +46,7 @@ const Game = () => {
 
   const handleClick = (index: number): void => {
     const newSquares = [...squares];
-    if (calculateWinner(squares) || newSquares[index]) {
+    if (winner?.winner || newSquares[index]) {
       clearTimeout(timerId.current as NodeJS.Timeout);
       return;
     }
@@ -54,26 +65,25 @@ const Game = () => {
         setSquares(x);
         setDisabled(false);
         setXIsNext(true);
-      }, Math.random() * 1000);
+      }, Math.random() * 1500);
     }
   };
 
   return (
     <Container>
-      <InfoTable winner={calculateWinner(squares)} xIsNext={xIsNext} />
-      <GameField>
-        <SquaresList
-          squares={squares}
-          onClick={handleClick}
-          disabled={disabled}
-        />
-        <Restart
-          winner={calculateWinner(squares)}
-          onClick={onRestartClick}
-          squares={squares}
-          players={players}
-        />
-      </GameField>
+      <InfoTable winner={winner} xIsNext={xIsNext} />
+      <SquaresList
+        winner={winner}
+        squares={squares}
+        onClick={handleClick}
+        disabled={disabled}
+      />
+      <Restart
+        winner={winner}
+        onClick={onRestartClick}
+        squares={squares}
+        players={players}
+      />
     </Container>
   );
 };

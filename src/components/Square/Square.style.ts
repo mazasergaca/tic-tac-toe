@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
+type StylesI = {
+  isWinner: boolean;
+};
 
 export const Item = styled.li`
   width: calc(100% / 3);
@@ -49,21 +54,26 @@ export const Item = styled.li`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<StylesI>`
   width: 100%;
   height: 100%;
 
   font-size: 80px;
 
   border: none;
-  background-color: transparent;
+  background-color: ${props => (props.isWinner ? '#5eff9f' : 'transparent')};
   cursor: pointer;
+  transition: background-color 500ms;
+
+  &:active {
+    background-color: #ffffff50;
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 120px;
   }
 `;
 
-export const Value = styled.span`
+export const Value = styled(motion.p)`
   color: #fff;
 `;

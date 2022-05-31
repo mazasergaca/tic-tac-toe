@@ -47,5 +47,6 @@ export const Coins = styled.p`
   padding: 3px 15px;
 
   border-radius: 20px;
+  color: #fff;
   background-color: #40c7a9;
 `;

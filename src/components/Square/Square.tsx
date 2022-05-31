@@ -1,17 +1,35 @@
 import React, { FC } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Item, Button, Value } from './Square.style';
 
 interface SquareProps {
   value: string;
   onClick: () => void;
   disabled: boolean;
+  isWinner: boolean;
 }
 
-const Square: FC<SquareProps> = ({ value, onClick, disabled }) => {
+const Square: FC<SquareProps> = ({ value, onClick, disabled, isWinner }) => {
   return (
     <Item>
-      <Button type="button" onClick={onClick} disabled={disabled}>
-        <Value>{value}</Value>
+      <Button
+        isWinner={isWinner}
+        type="button"
+        onClick={onClick}
+        disabled={disabled}
+      >
+        <AnimatePresence>
+          {value && (
+            <Value
+              initial={{ scale: 0.5 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0 }}
+            >
+              {value}
+            </Value>
+          )}
+        </AnimatePresence>
       </Button>
     </Item>
   );
