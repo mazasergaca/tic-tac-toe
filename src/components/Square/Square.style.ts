@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 type StylesI = {
   isWinner: boolean;
@@ -64,11 +65,15 @@ export const Button = styled.button<StylesI>`
   cursor: pointer;
   transition: background-color 500ms;
 
+  &:active {
+    background-color: #ffffff50;
+  }
+
   @media screen and (min-width: 768px) {
     font-size: 120px;
   }
 `;
 
-export const Value = styled.span`
+export const Value = styled(motion.p)`
   color: #fff;
 `;

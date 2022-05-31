@@ -26,7 +26,7 @@ export const Container = styled(motion.div)<StylesProp>`
   background-color: #391898;
 `;
 
-export const Text = styled(motion.p)<StylesProp>`
+export const Text = styled.p<StylesProp>`
   margin-bottom: 15px;
   font-size: 32px;
 
@@ -49,7 +49,7 @@ export const Svg = styled(motion.svg)`
   height: 100px;
 `;
 
-export const WrapperButton = styled(motion.div)`
+export const WrapperButton = styled.div`
   margin-top: 25px;
 `;
 

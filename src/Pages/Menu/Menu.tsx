@@ -1,16 +1,12 @@
 import React from 'react';
+import { useCoinsContext } from 'src/context/CoinsContext';
 import sprite from '../../assets/sprite.svg';
 import MenuNav from 'src/components/MenuNav/MenuNav';
-import {
-  Container,
-  Title,
-  Svg,
-  WrapperHeader,
-  WrapperCoin,
-  Coins,
-} from './Menu.styles';
+import Container from 'src/components/Container/Container';
+import { Title, Svg, WrapperHeader, WrapperCoin, Coins } from './Menu.styles';
 
 const Menu = () => {
+  const { coins } = useCoinsContext();
   return (
     <Container>
       <WrapperHeader>
@@ -19,7 +15,7 @@ const Menu = () => {
           <Svg>
             <use href={sprite + '#alien-coin'}></use>
           </Svg>
-          <Coins>100</Coins>
+          <Coins>{coins}</Coins>
         </WrapperCoin>
       </WrapperHeader>
 

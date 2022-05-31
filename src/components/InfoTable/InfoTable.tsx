@@ -1,5 +1,11 @@
 import React, { FC } from 'react';
-import { Container, ContainerInfo, InfoText } from './InfoTable.style';
+
+import {
+  Container,
+  ContainerInfo,
+  InfoText,
+  LinkStyled,
+} from './InfoTable.style';
 
 interface InfoTabsProps {
   winner: {
@@ -13,6 +19,7 @@ const InfoTable: FC<InfoTabsProps> = ({ winner, xIsNext }) => {
   return (
     <Container>
       <ContainerInfo>
+        <LinkStyled to="/menu">⇐</LinkStyled>
         <InfoText>
           {winner?.winner
             ? `Winner: ${winner.winner}`

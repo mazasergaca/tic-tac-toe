@@ -57,8 +57,11 @@ export const Svg = styled.svg`
 `;
 
 export const Name = styled.div<StylesI>`
-  padding: 10px 0 10px 100px;
+  padding: 15px 0 15px 100px;
   width: 100%;
+
+  font-size: 18px;
+  font-weight: bold;
 
   text-align: center;
   border-radius: 20px;

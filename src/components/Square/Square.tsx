@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Item, Button, Value } from './Square.style';
 
 interface SquareProps {
@@ -17,7 +18,18 @@ const Square: FC<SquareProps> = ({ value, onClick, disabled, isWinner }) => {
         onClick={onClick}
         disabled={disabled}
       >
-        <Value>{value}</Value>
+        <AnimatePresence>
+          {value && (
+            <Value
+              initial={{ scale: 0.5 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0 }}
+            >
+              {value}
+            </Value>
+          )}
+        </AnimatePresence>
       </Button>
     </Item>
   );

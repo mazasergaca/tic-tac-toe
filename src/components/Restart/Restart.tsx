@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import sprite from '../../assets/sprite.svg';
 import {
   Container,
@@ -47,9 +47,6 @@ const Restart: FC<RestartProps> = ({ winner, onClick, squares, players }) => {
         >
           {players && (
             <Text
-              initial={{ opacity: 0, y: -10, x: -10 }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
               color={
                 winner?.winner === 'X' || winner?.winner === 'O'
                   ? '#FFE03B'
@@ -65,9 +62,6 @@ const Restart: FC<RestartProps> = ({ winner, onClick, squares, players }) => {
           )}
           {!players && (
             <Text
-              initial={{ opacity: 0, y: -10, x: -10 }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
               color={
                 winner?.winner === 'X'
                   ? '#FFE03B'
@@ -84,9 +78,9 @@ const Restart: FC<RestartProps> = ({ winner, onClick, squares, players }) => {
             </Text>
           )}
           <Backdrop
-            initial={{ opacity: 0, scaleY: 0.8 }}
+            initial={{ opacity: 0, scaleY: 0.9 }}
             animate={{ opacity: 1, scaleY: 1 }}
-            transition={{ duration: 0.3, delay: 0.6 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
             bgc={
               players && (winner?.winner === 'X' || winner?.winner === 'O')
                 ? '#FF9900'
@@ -119,11 +113,7 @@ const Restart: FC<RestartProps> = ({ winner, onClick, squares, players }) => {
               ></use>
             </Svg>
           </Backdrop>
-          <WrapperButton
-            initial={{ opacity: 0, y: -10, x: -10 }}
-            animate={{ opacity: 1, y: 0, x: 0 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-          >
+          <WrapperButton>
             <Button
               type="button"
               onClick={onClickBackBtn}
