@@ -12,8 +12,12 @@ export const calculateWinner = (squares: string[]) => {
 
   for (const line of lines) {
     const [a, b, c] = line;
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c])
-      return squares[a];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return {
+        winner: squares[a],
+        lines: [a, b, c],
+      };
+    }
   }
   return null;
 };

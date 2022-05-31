@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { calculateWinner } from 'src/utils/calculate-winner';
 import computer from 'src/utils/computer';
-import GameField from '../../components/GameField/GameField';
 import SquaresList from '../../components/SquaresList/SquaresList';
 import InfoTable from '../../components/InfoTable/InfoTable';
 import Restart from '../../components/Restart/Restart';
@@ -61,19 +60,18 @@ const Game = () => {
   return (
     <Container>
       <InfoTable winner={calculateWinner(squares)} xIsNext={xIsNext} />
-      <GameField>
-        <SquaresList
-          squares={squares}
-          onClick={handleClick}
-          disabled={disabled}
-        />
-        <Restart
-          winner={calculateWinner(squares)}
-          onClick={onRestartClick}
-          squares={squares}
-          players={players}
-        />
-      </GameField>
+      <SquaresList
+        winner={calculateWinner(squares)}
+        squares={squares}
+        onClick={handleClick}
+        disabled={disabled}
+      />
+      <Restart
+        winner={calculateWinner(squares)}
+        onClick={onRestartClick}
+        squares={squares}
+        players={players}
+      />
     </Container>
   );
 };

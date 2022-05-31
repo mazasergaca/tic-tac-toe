@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const Container = styled.div`
   position: relative;
@@ -15,7 +16,7 @@ export const WrapperLink = styled.div`
   justify-content: center;
 `;
 
-export const Svg = styled.svg`
+export const Svg = styled(motion.svg)`
   position: absolute;
   transform: translateX(-50%);
 

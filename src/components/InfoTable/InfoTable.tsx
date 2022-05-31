@@ -2,7 +2,10 @@ import React, { FC } from 'react';
 import { Container, ContainerInfo, InfoText } from './InfoTable.style';
 
 interface InfoTabsProps {
-  winner: string | null;
+  winner: {
+    winner: string;
+    lines: number[];
+  } | null;
   xIsNext: boolean;
 }
 
@@ -11,7 +14,9 @@ const InfoTable: FC<InfoTabsProps> = ({ winner, xIsNext }) => {
     <Container>
       <ContainerInfo>
         <InfoText>
-          {winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`}
+          {winner?.winner
+            ? `Winner: ${winner.winner}`
+            : `Next player: ${xIsNext ? 'X' : 'O'}`}
         </InfoText>
       </ContainerInfo>
     </Container>

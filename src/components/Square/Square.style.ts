@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+type StylesI = {
+  isWinner: boolean;
+};
+
 export const Item = styled.li`
   width: calc(100% / 3);
   height: calc(100% / 3);
@@ -49,15 +53,16 @@ export const Item = styled.li`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<StylesI>`
   width: 100%;
   height: 100%;
 
   font-size: 80px;
 
   border: none;
-  background-color: transparent;
+  background-color: ${props => (props.isWinner ? '#5eff9f' : 'transparent')};
   cursor: pointer;
+  transition: background-color 500ms;
 
   @media screen and (min-width: 768px) {
     font-size: 120px;
