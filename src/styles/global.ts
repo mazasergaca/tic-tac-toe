@@ -12,7 +12,7 @@ export const Global = createGlobalStyle`
 body {
   min-height: 100vh;
 
-  font-family: 'Secular One', sans-serif;;
+  font-family: 'Secular One', sans-serif;
   background-color: #fff;
   background-image: linear-gradient(180deg, #5D5FEF 0%, #843CE0 100%);
     color: #000;

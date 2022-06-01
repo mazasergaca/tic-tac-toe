@@ -59,6 +59,7 @@ export const Button = styled.button<StylesI>`
   height: 100%;
 
   font-size: 80px;
+  line-height: 1.1;
 
   border: none;
   background-color: ${props => (props.isWinner ? '#5eff9f' : 'transparent')};

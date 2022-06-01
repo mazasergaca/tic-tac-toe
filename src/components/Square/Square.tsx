@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useThemeSkinContext } from 'src/context/ThemeSkinContext';
 import { Item, Button, Value } from './Square.style';
 
 interface SquareProps {
@@ -10,6 +11,7 @@ interface SquareProps {
 }
 
 const Square: FC<SquareProps> = ({ value, onClick, disabled, isWinner }) => {
+  const { skin } = useThemeSkinContext();
   return (
     <Item>
       <Button
@@ -25,6 +27,7 @@ const Square: FC<SquareProps> = ({ value, onClick, disabled, isWinner }) => {
               animate={{ scale: 1 }}
               transition={{ duration: 0.2 }}
               exit={{ opacity: 0 }}
+              style={{ ...skin, fontSize: 80 }}
             >
               {value}
             </Value>
