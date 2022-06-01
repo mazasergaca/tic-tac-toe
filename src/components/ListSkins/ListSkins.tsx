@@ -1,13 +1,13 @@
 import React from 'react';
 import Skin from '../Skin/Skin';
+import { skins } from 'src/utils/skins';
 import { List } from './ListSkins.styles';
 
 const ListSkins = () => {
-  const arr = Array(1).fill(0);
   return (
     <List>
-      {arr.map(item => (
-        <Skin />
+      {skins.map((style, index) => (
+        <Skin key={index} style={style} index={index} />
       ))}
     </List>
   );
