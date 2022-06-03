@@ -24,6 +24,10 @@ const Game = () => {
   const typeGame = new URLSearchParams(location.search).get('type');
 
   useEffect(() => {
+    if (winner?.winner) clearTimeout(timerId.current as NodeJS.Timeout);
+  }, [winner]);
+
+  useEffect(() => {
     setWinner(calculateWinner(squares));
   }, [squares]);
 
@@ -41,13 +45,13 @@ const Game = () => {
     setSquares(initialSquares);
     setXIsNext(true);
     setDisabled(false);
+    setWinner(null);
     clearTimeout(timerId.current as NodeJS.Timeout);
   };
 
   const handleClick = (index: number): void => {
     const newSquares = [...squares];
     if (winner?.winner || newSquares[index]) {
-      clearTimeout(timerId.current as NodeJS.Timeout);
       return;
     }
     newSquares[index] = xIsNext ? 'X' : 'O';
