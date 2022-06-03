@@ -30,6 +30,11 @@ export const LinkStyled = styled(Link)`
   font-size: 40px;
 
   color: #fff;
+  transition: transform 250ms;
+
+  &:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
 `;
 
 export const InfoText = styled.p`

@@ -1,39 +1,36 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Item = styled.li`
-  position: relative;
+export const Wrapper = styled.div`
+  max-width: 300px;
   padding: 15px;
-  width: calc((100% - 15px) / 2);
-  height: 150px;
+  margin: 0 auto;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
-  border: 3px solid #391898;
   border-radius: 20px;
+  border: 3px solid #391898;
   background-color: #451cbb;
-
-  &:nth-child(2n - 1) {
-    margin-right: 15px;
-  }
-
-  &:nth-last-child(n + 3) {
-    margin-bottom: 15px;
-  }
 `;
 
 export const WrapperSkins = styled.div`
+  height: 80px;
+  width: 130px;
+  position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const SkinStyled = styled.p`
+export const SkinStyled = styled(motion.p)`
   font-size: 5rem;
   line-height: 1;
 
   color: #fff;
 
-  &:not(:last-child) {
+  &:not(:last-of-type) {
     margin-right: 10px;
   }
 `;
@@ -81,5 +78,29 @@ export const ButtonColor = styled.button`
 
   &:disabled {
     border-radius: 50%;
+  }
+`;
+
+export const ArrowButton = styled.button`
+  position: absolute;
+  top: 20%;
+
+  font-size: 40px;
+
+  border: none;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+
+  &.left {
+    left: -45px;
+  }
+
+  &.right {
+    right: -45px;
+  }
+
+  &:disabled {
+    color: #ffffff90;
   }
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'src/components/Container/Container';
 import { useCoinsContext } from 'src/context/CoinsContext';
 import sprite from '../../assets/sprite.svg';
-import ListSkins from 'src/components/ListSkins/ListSkins';
+import Skin from 'src/components/Skin/Skin';
 import {
   Coins,
   LinkStyled,
@@ -10,6 +10,7 @@ import {
   Title,
   WrapperCoin,
   WrapperHeader,
+  WrapperItems,
 } from './Market.styles';
 
 const Market = () => {
@@ -26,7 +27,9 @@ const Market = () => {
           <Coins>{coins}</Coins>
         </WrapperCoin>
       </WrapperHeader>
-      <ListSkins />
+      <WrapperItems>
+        <Skin />
+      </WrapperItems>
     </Container>
   );
 };

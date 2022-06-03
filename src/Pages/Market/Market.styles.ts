@@ -16,6 +16,11 @@ export const LinkStyled = styled(Link)`
   font-size: 40px;
 
   color: #fff;
+  transition: transform 250ms;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const WrapperCoin = styled.div`
@@ -36,4 +41,8 @@ export const Coins = styled.p`
   border-radius: 20px;
   color: #fff;
   background-color: #40c7a9;
+`;
+
+export const WrapperItems = styled.div`
+  padding: 30px 0;
 `;

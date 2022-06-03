@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 const Home = lazy(() => import('../../Pages/Home/Home'));
 const Menu = lazy(() => import('../../Pages/Menu/Menu'));
@@ -9,7 +10,7 @@ const Achievement = lazy(() => import('../../Pages/Achievement/Achievement'));
 
 const RoutesComponent = () => {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<Menu />} />

@@ -80,7 +80,7 @@ const Restart: FC<RestartProps> = ({ winner, onClick, squares, players }) => {
           <Backdrop
             initial={{ opacity: 0, scaleY: 0.9 }}
             animate={{ opacity: 1, scaleY: 1 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
             bgc={
               players && (winner?.winner === 'X' || winner?.winner === 'O')
                 ? '#FF9900'
