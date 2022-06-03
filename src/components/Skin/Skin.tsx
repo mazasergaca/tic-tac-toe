@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useThemeSkinContext } from 'src/context/ThemeSkinContext';
-import { AnimatePresence } from 'framer-motion';
 import { skins } from 'src/utils/skins';
 import { colors } from 'src/utils/colors';
 import {
